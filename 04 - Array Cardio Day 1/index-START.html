@@ -6,7 +6,7 @@
 </head>
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
-  <script>
+  <script> 
     // Get your shorts on - this is an array workout!
     // ## Array Cardio Day 1
 
@@ -38,16 +38,29 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    let result = inventors.filter(person => person.year>=1500 && person.year<1600);
+    //console.log(result);
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
 
+    result = inventors.map(person=>person.first+" "+person.last);
+    //console.log(result);
+
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    result = inventors.sort(function(a,b){return a.year-b.year});
+    //console.log(result);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let reducer = (total, inventor) => (total + (inventor.passed-inventor.year));
+    result = inventors.reduce(reducer,0);
+    //console.log(result);
 
     // 5. Sort the inventors by years lived
+    result = inventors.sort(function(a,b){return (a.passed-a.year)-(b.passed-b.year)});
+    console.log(result);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -55,10 +68,21 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const ordered = people.sort(function(a,b){
+      return a.split(',')[0] > b.split(',')[0] ? 1 : -1;
+    })
+    //console.log(ordered);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let sorted = data.sort(function(a,b){
+      return a > b ? 1 : -1;
+    })
+    let countObj = {};
+    sorted.map(x => countObj[x] ? countObj[x]++ : countObj[x]=1);
+    console.log(countObj);
 
   </script>
 </body>
